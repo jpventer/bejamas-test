@@ -2,23 +2,145 @@ import React from 'react'
 
 import Layout from '../components/Layout'
 
-export function IndexPageTemplate({}) {
-  return (
-    <>
-      <h1>Index Page</h1>
-    </>
-  )
+import { graphql, Link } from 'gatsby'
+
+
+import Img from 'gatsby-image'
+
+import styled from 'styled-components'
+import LogosWidget from '../components/LogosWidget'
+import PostTilesWidget from '../components/PostTilesWidget'
+
+export const query = graphql`
+query ($slug: String!) {
+  markdownRemark(fields: {slug: {eq: $slug}}) {
+    frontmatter {
+      title
+      hero {
+        heading
+        subheading
+      }
+      intro {
+        description
+        heading
+      }
+      logos {
+        link
+        image {
+          publicURL
+        }
+      }
+    }
+  }
+  hero1: file(relativePath: {eq: "56256.jpg"}) {
+    childImageSharp {
+      fluid(maxWidth: 383, quality: 100) {
+        aspectRatio
+        base64
+        sizes
+        src
+        srcSet
+      }
+    }
+  }
+  hero2: file(relativePath: {eq: "56217.jpg"}) {
+    childImageSharp {
+      fluid(maxWidth: 236, quality: 100) {
+        aspectRatio
+        base64
+        sizes
+        src
+        srcSet
+      }
+    }
+  }
 }
+`
+
+const StyledIndexPageTemplate = styled.div`
+  
+  .intro-section{
+    display: grid;
+    grid-template-rows: max-content 1fr;
+    grid-template-columns: 60% 40%;
+    row-gap:5.5rem;
+
+    .title.header3 {
+        grid-row-start: 1;
+        grid-column-start: span 2;
+        text-align:center;
+    }
+
+    .left-content{       
+        max-width: 236px;
+        justify-self: center;
+        width: 100%;
+    }
+
+      .right-content{
+        max-width:545px;
+        align-self: center;
+      }
+  }
+
+`
+
+const IndexPageTemplate = ({ pageContent }) => (
+  <StyledIndexPageTemplate>
+    <div className="container boxed hero1">
+      <div className="left-content">
+        <h1 className="title hero1">
+          {pageContent.markdownRemark.frontmatter.hero.heading}
+        </h1>
+        <h2 className="title hero1-subtitle">
+          {pageContent.markdownRemark.frontmatter.hero.subheading}
+        </h2>
+      </div>
+      <div className="right-content">
+        <Img
+          fluid={pageContent.hero1.childImageSharp.fluid}
+          alt="hero 1 image"
+        />
+      </div>
+    </div>
+
+    <div className="container boxed intro-section">
+      <h3 className="title header3">
+        {pageContent.markdownRemark.frontmatter.intro.heading}
+      </h3>
+
+      <div className="left-content">
+        <Img
+          fluid={pageContent.hero2.childImageSharp.fluid}
+          alt="new product, new story"
+        />
+      </div>
+
+      <div className="right-content">
+        <h4 className="title header4">TODO: New Product, new Story</h4>
+        <div
+          className="normal-copy"
+          dangerouslySetInnerHTML={{
+            __html: pageContent.markdownRemark.frontmatter.intro.description
+          }}
+        ></div>
+      </div>
+    </div>
+
+    <LogosWidget logos={pageContent.markdownRemark.frontmatter.logos} />
+    <PostTilesWidget />
+
+  </StyledIndexPageTemplate>
+);
 
 IndexPageTemplate.propTypes = {}
 
-function IndexPage() {
-  return (
-    <Layout>
-      <IndexPageTemplate />
-    </Layout>
-  )
-}
+
+const IndexPage = (props) => (
+  <Layout>
+      <IndexPageTemplate pageContent={props.data} />            
+  </Layout>
+)
 
 IndexPage.propTypes = {}
 

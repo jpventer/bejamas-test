@@ -28,7 +28,13 @@ module.exports = {
         name: 'images',
       },
     },
-    'gatsby-plugin-sharp',
+    'gatsby-plugin-sharp',{
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/static/uploads`,
+        name: 'uploads',
+      },
+    },
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-transformer-remark',
@@ -58,6 +64,7 @@ module.exports = {
         ],
       },
     },
+    'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
