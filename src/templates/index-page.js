@@ -77,10 +77,13 @@ const StyledIndexPageTemplate = styled.div`
         width: 100%;
     }
 
-      .right-content{
-        max-width:545px;
-        align-self: center;
-      }
+    .right-content{
+      max-width:545px;
+      align-self: center;
+    }
+
+    
+
   }
 
 `

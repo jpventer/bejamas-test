@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 
 import { useSiteMetadata } from '../lib/hooks'
 
-import TopMenu from './Navigation/TopMenu'
+import Menu from './Menu'
 import GlobalStyle from '../lib/GlobalStyle'
 import Footer from './Footer'
 
@@ -25,7 +25,7 @@ function Layout(props) {
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" rel="stylesheet"></link>
       </Helmet>
       <GlobalStyle/>
-      <TopMenu />  
+      <Menu/>  
         <main>          
           {props.children}
         </main>

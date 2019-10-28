@@ -54,6 +54,10 @@ const GlobalStyle = createGlobalStyle`
             height: 100vh;
             align-items: center;
 
+            @media screen and (max-width:1072px) {
+                grid-template-columns: 1fr;
+            }
+
             .left-content{
                 max-width: 545px;
                 justify-self: center;
@@ -80,6 +84,8 @@ const GlobalStyle = createGlobalStyle`
                     margin-top:6.7rem;
                 }
             }
+
+           
         }
 
       }
