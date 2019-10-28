@@ -4,26 +4,39 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from 'gatsby-image'
 
 const StyledPostTileContainer = styled.div`
-    display: grid;
-    grid-column-gap: 2.4rem;
-    justify-items:center;
-    grid-auto-flow:column;
-
+    display: flex;
+    flex-wrap: wrap;    
+    justify-content:center;
 `
 
 const StyledPostTile = styled.div`
     width:282px;
-    height: 264px;
+    height:255px;
     background-color: white;
     box-shadow: 0px 2px 16px #394E5D36;
     border-radius: 4px;
+    margin:1.2rem;
+    transition: 0.3s all ease;
+
+    &:first-child{
+      margin-left:0;
+    }
+
+    &:last-child{
+      margin-right:0;
+    }
+
+    &:hover{
+      transform: scale(1.05);
+    }
 
     a{
-        text-decoration:none;
-    
+        text-decoration:none;    
 
-        .post-img{
-
+        .post-image{
+          border-top-left-radius: 4px;
+          border-top-right-radius: 4px;
+          max-height:144px;
         }
 
         .summary-block{
@@ -39,7 +52,12 @@ const StyledPostTile = styled.div`
                 font-size: 2rem;
                 line-height:2.7rem;
                 letter-spacing: 0;
-                color: #394E5D;       
+                color: #394E5D; 
+                margin-bottom: 1rem;
+
+                 white-space: nowrap;
+                 overflow: hidden;
+                 text-overflow: ellipsis;   
             }
 
             p{
@@ -59,29 +77,29 @@ const StyledPostTile = styled.div`
 const PostTilesWidget = () => {
     const data = useStaticQuery(graphql`
     {
-        allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "blog-post"}}}, limit: 4) {
-          edges {
-            node {
-              frontmatter {
-                title
-                excerpt
-                path
-                featuredimage {
-                  childImageSharp {
-                    fluid {
-                      src
-                      srcSet
-                      aspectRatio
-                    }
+      allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "blog-post"}}}, limit: 4) {
+        edges {
+          node {
+            frontmatter {
+              title
+              path
+              featuredimage {
+                childImageSharp {
+                  fluid(maxHeight: 144) {
+                    src
+                    srcSet
+                    aspectRatio
                   }
                 }
               }
-              fields {
-                slug
-              }
             }
+            fields {
+              slug
+            }
+            excerpt(pruneLength: 50)
           }
         }
+      }
       }
   `)
 
@@ -96,7 +114,7 @@ const PostTilesWidget = () => {
                         <Img className="post-image" fluid={post.node.frontmatter.featuredimage.childImageSharp.fluid} alt={post.node.frontmatter.title} />
                         <div className="summary-block">
                             <h5>{post.node.frontmatter.title}</h5>
-                            <p>{post.node.frontmatter.excerpt}</p>                
+                            <p>{post.node.excerpt}</p>                
                         </div>
                     </Link>
                 </StyledPostTile>

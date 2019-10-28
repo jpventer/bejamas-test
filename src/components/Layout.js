@@ -24,12 +24,12 @@ function Layout(props) {
         <meta property="og:url" content="/" />
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" rel="stylesheet"></link>
       </Helmet>
-      <GlobalStyle/>     
-        <main>
-          <TopMenu />
+      <GlobalStyle/>
+      <TopMenu />  
+        <main>          
           {props.children}
         </main>
-        <Footer />
+      <Footer />
     </div>
   )
 }

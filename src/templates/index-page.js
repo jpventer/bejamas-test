@@ -2,7 +2,7 @@ import React from 'react'
 
 import Layout from '../components/Layout'
 
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 
 
 import Img from 'gatsby-image'

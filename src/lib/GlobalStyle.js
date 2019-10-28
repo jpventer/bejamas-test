@@ -42,7 +42,9 @@ const GlobalStyle = createGlobalStyle`
         }
   }
 
-  main{    
+  main{
+
+      padding-top:6rem;      
 
     .container{ 
         /* hero 1 type container */
