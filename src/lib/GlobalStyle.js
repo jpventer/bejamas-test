@@ -56,6 +56,8 @@ const GlobalStyle = createGlobalStyle`
 
             @media screen and (max-width:1072px) {
                 grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr;
+                justify-items: center;
             }
 
             .left-content{
@@ -65,6 +67,7 @@ const GlobalStyle = createGlobalStyle`
 
             .right-content{
                 max-width:383px;
+                width:100%;
             }
 
             @media(max-width: 480px) {

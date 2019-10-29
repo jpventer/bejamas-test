@@ -19,10 +19,29 @@ query ($slug: String!) {
       hero {
         heading
         subheading
+        image {
+          childImageSharp {
+            fluid(maxWidth: 385) {
+              sizes
+              src
+              srcSet
+              aspectRatio
+            }
+          }
+        }
       }
       intro {
         description
         heading
+        image {
+          childImageSharp {
+            fluid(maxWidth: 236) {
+              src
+              srcSet
+              aspectRatio
+            }
+          }
+        }
       }
       logos {
         link
@@ -32,29 +51,8 @@ query ($slug: String!) {
       }
     }
   }
-  hero1: file(relativePath: {eq: "56256.jpg"}) {
-    childImageSharp {
-      fluid(maxWidth: 383, quality: 100) {
-        aspectRatio
-        base64
-        sizes
-        src
-        srcSet
-      }
-    }
-  }
-  hero2: file(relativePath: {eq: "56217.jpg"}) {
-    childImageSharp {
-      fluid(maxWidth: 236, quality: 100) {
-        aspectRatio
-        base64
-        sizes
-        src
-        srcSet
-      }
-    }
-  }
 }
+
 `
 
 const StyledIndexPageTemplate = styled.div`
@@ -101,7 +99,7 @@ const IndexPageTemplate = ({ pageContent }) => (
       </div>
       <div className="right-content">
         <Img
-          fluid={pageContent.hero1.childImageSharp.fluid}
+          fluid={pageContent.markdownRemark.frontmatter.hero.image.childImageSharp.fluid}
           alt="hero 1 image"
         />
       </div>
@@ -114,7 +112,7 @@ const IndexPageTemplate = ({ pageContent }) => (
 
       <div className="left-content">
         <Img
-          fluid={pageContent.hero2.childImageSharp.fluid}
+          fluid={pageContent.markdownRemark.frontmatter.intro.image.childImageSharp.fluid}
           alt="new product, new story"
         />
       </div>
