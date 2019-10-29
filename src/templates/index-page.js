@@ -10,6 +10,8 @@ import Img from 'gatsby-image'
 import styled from 'styled-components'
 import LogosWidget from '../components/LogosWidget'
 import PostTilesWidget from '../components/PostTilesWidget'
+import HeroComponent from '../components/HeroComponent'
+import IntroComponent from '../components/IntroComponent'
 
 export const query = graphql`
 query ($slug: String!) {
@@ -55,98 +57,14 @@ query ($slug: String!) {
 
 `
 
-const StyledIndexPageTemplate = styled.div`
-  
-  .intro-section{
-    display: grid;
-    grid-template-rows: max-content 1fr;
-    grid-template-columns: 60% 40%;
-    row-gap:5.5rem;
-
-    margin-top:17rem;
-
-    @media screen and (max-width: 786px) {
-      grid-template-columns: 1fr;
-    }
-
-    .title.header3 {
-        grid-row-start: 1;
-        grid-column-start: span 2;
-       
-        @media screen and (max-width: 786px) {
-          text-align:left;
-        }
-    }
-
-    .left-content{       
-        max-width: 236px;
-        justify-self: center;
-        width: 100%;
-
-        @media screen and (max-width: 786px) {
-          display:none;
-        }
-    }
-
-    .right-content{
-      max-width:545px;
-      align-self: center;
-    }
-
-    
-
-  }
-
-`
 
 const IndexPageTemplate = ({ pageContent }) => (
-  <StyledIndexPageTemplate>
-    <div className="container boxed hero1">
-      <div className="left-content">
-        <h1 className="title hero1">
-          {pageContent.markdownRemark.frontmatter.hero.heading}
-        </h1>
-        <h2 className="title hero1-subtitle">
-          {pageContent.markdownRemark.frontmatter.hero.subheading}
-        </h2>
-      </div>
-      <div className="right-content">
-        <Img
-          fluid={pageContent.markdownRemark.frontmatter.hero.image.childImageSharp.fluid}
-          alt="hero 1 image"
-        />
-      </div>
-    </div>
-
-  {/* INTRO SECTION */}
-    <div className="container boxed intro-section">
-      <h3 className="title header3">
-        {pageContent.markdownRemark.frontmatter.intro.heading}
-      </h3>
-
-      <div className="left-content">
-        <Img
-          fluid={pageContent.markdownRemark.frontmatter.intro.image.childImageSharp.fluid}
-          alt="new product, new story"
-        />
-      </div>
-
-      <div className="right-content">
-        <h4 className="title header4">TODO: New Product, new Story</h4>
-        <div
-          className="normal-copy"
-          dangerouslySetInnerHTML={{
-            __html: pageContent.markdownRemark.frontmatter.intro.description
-          }}
-        ></div>
-      </div>
-    </div>
-
-    {/* <LogosWidget logos={pageContent.markdownRemark.frontmatter.logos} /> */}
-
+  <>
+    <HeroComponent content={pageContent.markdownRemark.frontmatter.hero} />
+    <IntroComponent content={pageContent.markdownRemark.frontmatter.intro} />
+    <LogosWidget logos={pageContent.markdownRemark.frontmatter.logos} />
     <PostTilesWidget />
-
-  </StyledIndexPageTemplate>
+  </>
 );
 
 IndexPageTemplate.propTypes = {}

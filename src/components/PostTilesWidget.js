@@ -34,7 +34,7 @@ const StyledPostTile = styled.div`
     transition: 0.2s transform ease;
     margin:1.2rem;
 
-    @media screen and (max-width:480px) {
+    @media screen and (max-width:649px) {
       width:100%;
       margin-left:0;
       margin-right:0;

@@ -30,6 +30,11 @@ const GlobalStyle = createGlobalStyle`
     color: #182333;
   }
 
+  main{
+      padding-top:6rem;
+      padding-bottom:17rem;      
+  }
+
   .container{
         margin:0 auto;
 
@@ -43,91 +48,21 @@ const GlobalStyle = createGlobalStyle`
             width:100%;
         }
   }
-
-  main{
-
-      padding-top:6rem;
-         
-
-    .container{ 
-        /* hero 1 type container */
-        &.hero1{
-            display: grid;
-            grid-template-columns: 55% 45%;
-            height: 100vh;
-            align-items: center;
-
-            @media screen and (max-width:1072px) {
-                grid-template-columns: 1fr;
-                grid-template-rows: 1fr 1fr;
-                justify-items: center;
-            }
-
-            .left-content{
-                max-width: 545px;
-                justify-self: center;
-            }
-
-            .right-content{
-                max-width:383px;
-                width:100%;
-            }
-
-            @media(max-width: 480px) {
-                grid-template-columns: auto;
-                grid-template-rows: auto;
-                justify-items: center;
-
-                .left-content{
-                    width: 323px;
-                    align-self: flex-end;
-                    margin-bottom:1rem;
-                }
-
-                .right-content{
-                    width:262px;
-                    align-self: flex-start;
-                    margin-top:6.7rem;
-                }
-            }
-
-           
-        }
-
-      }
-      
-     
-  }
+ 
 
   .title{
       color: #394E5D;
-      
-      &.hero1{
-        font-size:4.6rem;
+
+      &.header1{
+        font-size: 4.6rem;
         line-height: 5.7rem;
         font-weight: 600;
         margin-bottom: 2rem;
       }
 
-      &.hero1-subtitle{
+      &.header2{
         font-size: 2.2rem;
-        line-height:2.7rem;
-      }
-
-      @media(max-width: 480px) {
-       
-        color: #333333;
-
-        &.hero1{
-            font-size:3.2rem;
-            line-height: 3.9rem;
-            margin-bottom: 2.2rem;
-        }
-
-        &.hero1-subtitle{
-            font-size: 1.8rem;
-            line-height:2.7rem;
-        }
+        line-height: 2.7rem;
       }
 
       &.header3{
@@ -142,11 +77,22 @@ const GlobalStyle = createGlobalStyle`
           font-weight:bold;
           margin-bottom:1.8rem;
       }
+
+      @media(max-width: 480px) {
+            
+            color: #333333;
+
+            &.header1{
+                font-size:3.2rem;
+                line-height: 3.9rem;
+            }
+
+            &.header2{
+                font-size: 1.8rem;
+            }
+        }
   }
 
-  .normal-copy{
-
-  }
 
   .blue-pill-button{
       padding: 1rem 3rem;

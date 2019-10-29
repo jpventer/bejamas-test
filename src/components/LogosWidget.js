@@ -7,17 +7,27 @@ import isValidURL from '../lib/IsValidURL'
 const StyledLogosComponent = styled.div`
     background-color: #F5F8FA;
     padding: 5rem 0;
-
-    margin-top:20rem;
+    margin-top:17rem;
     
-    .inner {
-        display: grid;
-        grid-auto-flow: column;
-        justify-items: center;
-        grid-column-gap:8.5rem;
+    
+    .inner-slide {        
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+        overflow-x: auto;
+        justify-content:center;
+        ::-webkit-scrollbar {    
+            display: none;
+        }
 
-        @media(max-width: 480px) {
-            overflow-x: auto;
+        a{
+            margin-left:4.2rem;
+            margin-right:4.2rem;
+        }
+
+        @media screen and (max-width:768px) {
+            justify-content:unset;
+            margin: 0 auto;
         }
     }
     
@@ -29,7 +39,7 @@ const LogosWidget = ( { logos } ) => (
 
     <StyledLogosComponent className="container full">
 
-        <div className="container boxed inner">
+        <div className="inner-slide">
         {logos.map(logo => {
             
             let url = logo.link;
