@@ -88,7 +88,7 @@ const StyledMenu = styled.div`
             background-color: white;
             height:100vh;
             transform:translateX(-100%);
-            transition: 0.4s all ease-out;
+            transition: 0.4s transform ease-out;
 
             &.open{
                 transform:translateX(0%);

@@ -34,7 +34,9 @@ const GlobalStyle = createGlobalStyle`
         margin:0 auto;
 
         &.boxed{
-            max-width:1440px; 
+            max-width:1440px;
+            padding-left:2rem;
+            padding-right:2rem; 
         }
 
         &.full{
@@ -44,7 +46,8 @@ const GlobalStyle = createGlobalStyle`
 
   main{
 
-      padding-top:6rem;      
+      padding-top:6rem;
+         
 
     .container{ 
         /* hero 1 type container */
@@ -155,7 +158,12 @@ const GlobalStyle = createGlobalStyle`
       font-weight: 600;
       line-height: 2.7rem;
       text-decoration:none;
-      margin: 0 auto;
+      width: max-content;
+
+      &:hover{
+          background-color: #3D86BF;
+          color:white;
+      }
   }
 `;
 
