@@ -7,6 +7,8 @@ import isValidURL from '../lib/IsValidURL'
 const StyledLogosComponent = styled.div`
     background-color: #F5F8FA;
     padding: 5rem 0;
+
+    margin-top:20rem;
     
     .inner {
         display: grid;

@@ -65,16 +65,29 @@ const StyledIndexPageTemplate = styled.div`
     grid-template-columns: 60% 40%;
     row-gap:5.5rem;
 
+    margin-top:17rem;
+
+    @media screen and (max-width: 786px) {
+      grid-template-columns: 1fr;
+    }
+
     .title.header3 {
         grid-row-start: 1;
         grid-column-start: span 2;
-        text-align:center;
+       
+        @media screen and (max-width: 786px) {
+          text-align:left;
+        }
     }
 
     .left-content{       
         max-width: 236px;
         justify-self: center;
         width: 100%;
+
+        @media screen and (max-width: 786px) {
+          display:none;
+        }
     }
 
     .right-content{
@@ -107,6 +120,7 @@ const IndexPageTemplate = ({ pageContent }) => (
       </div>
     </div>
 
+  {/* INTRO SECTION */}
     <div className="container boxed intro-section">
       <h3 className="title header3">
         {pageContent.markdownRemark.frontmatter.intro.heading}
@@ -130,7 +144,8 @@ const IndexPageTemplate = ({ pageContent }) => (
       </div>
     </div>
 
-    <LogosWidget logos={pageContent.markdownRemark.frontmatter.logos} />
+    {/* <LogosWidget logos={pageContent.markdownRemark.frontmatter.logos} /> */}
+
     <PostTilesWidget />
 
   </StyledIndexPageTemplate>

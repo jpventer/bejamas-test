@@ -4,27 +4,43 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from 'gatsby-image'
 
 const StyledPostTileContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;    
-    justify-content:center;
+     display: flex;
+     flex-wrap:wrap;
+
+     margin-top:2.4rem;
+     margin-bottom: 2.4rem;
+
+     justify-content:center;
+
+     margin-top:17rem;
+    
+   
+
+    .blue-pill-button{
+      grid-column-start: span 4;
+      justify-self: center;
+    }
+
+    
 `
 
 const StyledPostTile = styled.div`
     width:282px;
+    min-width:282px;
     height:255px;
     background-color: white;
     box-shadow: 0px 2px 16px #394E5D36;
     border-radius: 4px;
+    transition: 0.2s transform ease;
     margin:1.2rem;
-    transition: 0.3s all ease;
 
-    &:first-child{
+    @media screen and (max-width:480px) {
+      width:100%;
       margin-left:0;
-    }
-
-    &:last-child{
       margin-right:0;
+      margin-top:4.8rem;
     }
+      
 
     &:hover{
       transform: scale(1.05);
@@ -70,6 +86,8 @@ const StyledPostTile = styled.div`
         }
     }
 
+    
+
 
 
 `
@@ -105,7 +123,7 @@ const PostTilesWidget = () => {
 
   return (
       <>
-        <StyledPostTileContainer className="container boxed">
+        <StyledPostTileContainer className="container boxed" >
 
             { data.allMarkdownRemark.edges.map((post) => (
                 
@@ -120,10 +138,12 @@ const PostTilesWidget = () => {
                 </StyledPostTile>
 
             ))}
-
         </StyledPostTileContainer>
-
-        <Link to="#" className="blue-pill-button">Read More</Link>
+        
+        <div className="read-more-block" style={{marginTop: '4.5rem', textAlign: 'center'}}>
+          <Link className="blue-pill-button" to="#" >Read More</Link>
+        </div>
+        
     </>
     
   )
