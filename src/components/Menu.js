@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link, useStaticQuery, graphql } from 'gatsby'
+import Toggle from '../components/Toggle'
+
 
 const menuHeight = '6rem'
-
 
 const StyledMenu = styled.div`
 
     height: ${menuHeight};
-    background-color: white;
+    background-color: ${({ theme }) => theme.body};
     box-shadow: 0px 2px 12px #0000001D;
     position:fixed;
     width: 100%;
@@ -17,6 +18,13 @@ const StyledMenu = styled.div`
     .hamburgerMenu, .siteLogo.mobile{
         display:none;
     }
+
+    .themeToggle{
+            position: absolute;
+            right: 1%;
+            top: 50%;
+            transform: translateY(-50%);
+        } 
 
     nav{
         height: inherit;
@@ -33,7 +41,7 @@ const StyledMenu = styled.div`
             font-size: 2rem;
             line-height: 2.4rem;
             letter-spacing: 0;
-            color: #394E5D;
+            color: ${({ theme }) => theme.linksColor};
             position: relative;
             height: inherit;
             width:min-content;
@@ -75,7 +83,9 @@ const StyledMenu = styled.div`
 
         .siteLogo.main{
             display:block;
-        }        
+        }
+
+              
 
 
         /* nav responsive */
@@ -85,7 +95,7 @@ const StyledMenu = styled.div`
             flex-direction:column;
             justify-content:center;
             padding-left:4.2rem;
-            background-color: white;
+            background-color: ${({ theme }) => theme.body};
             height:100vh;
             transform:translateX(-100%);
             transition: 0.4s transform ease-out;
@@ -158,17 +168,20 @@ const StyledMenu = styled.div`
             display:block;
             z-index:3;
         }
+
+        .themeToggle{
+            display:none;
+        }
     }   
 
 `
 
 
 
-const Menu = () => {
+const Menu = ( { toggleTheme, theme }) => {
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
-
+    
     const data = useStaticQuery(graphql`
     {
         siteLogo: file(relativePath: {eq: "siteIcon.svg"}) {
@@ -217,6 +230,7 @@ const Menu = () => {
                 </Link>
 
             </nav>
+            <Toggle toggleTheme={toggleTheme} theme={theme} className='themeToggle' />
         </StyledMenu>
     )    
 

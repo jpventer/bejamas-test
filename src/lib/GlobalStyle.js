@@ -27,7 +27,9 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
     font-size:1.8rem;
     line-height:3.3rem;
-    color: #182333;
+    color: ${({ theme }) => theme.text};
+    background: ${({ theme }) => theme.body};
+    transition: all 0.25s linear;
   }
 
   main{
@@ -51,7 +53,7 @@ const GlobalStyle = createGlobalStyle`
  
 
   .title{
-      color: #394E5D;
+      color: ${({ theme }) => theme.titlesColor};
 
       &.header1{
         font-size: 4.6rem;

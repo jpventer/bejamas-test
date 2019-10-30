@@ -3,7 +3,7 @@ templateKey: index-page
 title: Home
 hero:
   heading: Start New… Today!
-  image: /uploads/56256.jpg
+  image: /uploads/56256.png
   subheading: |
     Vivamus vestibulum elit efficitur, elementum sapien a, aliquet ipsum
 intro:
@@ -17,7 +17,7 @@ intro:
     facilisis ultrices. Mauris vulputate metus sit amet ex dignissim, sed
     hendrerit nunc rhoncus. 
   heading: Lorem ipsum something
-  image: /uploads/56217.jpg
+  image: /uploads/56217.png
 logos:
   - image: /uploads/logo.svg
     link: 'https://example.com'

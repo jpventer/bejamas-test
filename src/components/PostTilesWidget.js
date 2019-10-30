@@ -39,6 +39,12 @@ const StyledPostTile = styled.div`
       margin-left:0;
       margin-right:0;
       margin-top:4.8rem;
+
+      display:none;
+
+      &:nth-child(-n + 2) {
+        display:block;
+      }
     }
       
 
