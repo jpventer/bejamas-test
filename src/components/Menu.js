@@ -200,7 +200,7 @@ const Menu = ( { toggleTheme, theme }) => {
         <StyledMenu   >
 
             <div className={`hamburgerMenu ${mobileMenuOpen ? 'open' : ''}`} onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-                <img src={mobileMenuOpen ? data.mobileMenuOpen.publicURL : data.mobileMenuClosed.publicURL } />
+                <img src={mobileMenuOpen ? data.mobileMenuOpen.publicURL : data.mobileMenuClosed.publicURL } alt="menu icon" />
             </div>
 
             <img className="siteLogo mobile" src={data.siteLogo.publicURL} alt="site logo" />

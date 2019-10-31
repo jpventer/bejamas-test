@@ -47,7 +47,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       component: TemplateKeys[node.frontmatter.templateKey],
       context: {
         slug: node.fields.slug
-      },
+      }
     })
   })
 }

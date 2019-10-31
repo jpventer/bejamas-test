@@ -4,10 +4,6 @@ import Layout from '../components/Layout'
 
 import { graphql } from 'gatsby'
 
-
-import Img from 'gatsby-image'
-
-import styled from 'styled-components'
 import LogosWidget from '../components/LogosWidget'
 import PostTilesWidget from '../components/PostTilesWidget'
 import HeroComponent from '../components/HeroComponent'
