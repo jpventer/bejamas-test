@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from 'gatsby-image'
-import SiteButton from './siteButton'
+import SiteButton from './SiteButton'
 
 const StyledPostTileContainer = styled.div`
      display: flex;
