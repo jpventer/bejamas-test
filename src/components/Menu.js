@@ -20,17 +20,17 @@ const StyledMenu = styled.div`
     }
 
     .themeToggle{
-            position: absolute;
-            right: 1%;
-            top: 50%;
-            transform: translateY(-50%);
-        } 
+        position: absolute;
+        right: 1%;
+        top: 50%;
+        transform: translateY(-50%);
+    } 
 
     nav{
         height: inherit;
         display:flex;
         align-items:center;
-        max-width:1440px;
+        max-width:769px;
         width:100%;
         justify-content:space-evenly;
         margin: 0 auto;

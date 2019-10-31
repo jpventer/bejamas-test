@@ -96,23 +96,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
 
-  .blue-pill-button{
-      padding: 1rem 3rem;
-      border-radius: 3.2rem;
-      border: 1px solid #3D86BF;
-
-      color: #4285BC;
-      font-size: 1.4rem;
-      font-weight: 600;
-      line-height: 2.7rem;
-      text-decoration:none;
-      width: max-content;
-
-      &:hover{
-          background-color: #3D86BF;
-          color:white;
-      }
-  }
+  
 `;
 
 export default GlobalStyle;

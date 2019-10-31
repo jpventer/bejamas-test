@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from 'gatsby-image'
+import SiteButton from './siteButton'
 
 const StyledPostTileContainer = styled.div`
      display: flex;
@@ -12,16 +13,8 @@ const StyledPostTileContainer = styled.div`
 
      justify-content:center;
 
-     margin-top:17rem;
-    
-   
-
-    .blue-pill-button{
-      grid-column-start: span 4;
-      justify-self: center;
-    }
-
-    
+     margin-top:17rem;  
+ 
 `
 
 const StyledPostTile = styled.div`
@@ -91,10 +84,17 @@ const StyledPostTile = styled.div`
             }
         }
     }
+`
 
-    
+const StyledReadMore = styled.div`    
 
+  margin-top: 4.5rem;
+  text-align: center;
 
+  .blue-pill-button{
+    grid-column-start: span 4;
+    justify-self: center;
+  }
 
 `
 
@@ -146,9 +146,9 @@ const PostTilesWidget = () => {
             ))}
         </StyledPostTileContainer>
         
-        <div className="read-more-block" style={{marginTop: '4.5rem', textAlign: 'center'}}>
-          <Link className="blue-pill-button" to="#" >Read More</Link>
-        </div>
+        <StyledReadMore>
+            <SiteButton className="blue-pill-button" to="#" >Read More </SiteButton>
+        </StyledReadMore>
         
     </>
     
