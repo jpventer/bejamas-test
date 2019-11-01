@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import isValidURL from '../lib/IsValidURL'
+import uuid from 'uuid/v4'
 
 
 const StyledLogosComponent = styled.div`
@@ -46,13 +47,13 @@ const LogosWidget = ( { logos } ) => (
 
             if(isValidURL(url)){
                 return (
-                    <a href={logo.link} target="_blank" rel="noopener noreferrer">
+                    <a key={uuid()} href={logo.link} target="_blank" rel="noopener noreferrer">
                         <img src={logo.image.publicURL} alt="logo link" />
                     </a>
                 )
             }else{
                 return (
-                    <Link to={logo.link}>
+                    <Link key={uuid()} to={logo.link}>
                         <img src={logo.image.publicURL} alt="logo link" />
                     </Link>                    
                 )

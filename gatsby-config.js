@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Recrut Be',
+    title: 'JP Test - Recrut Be',
     description:
       'simple business website using Gatsby and NetlifyCMS',
   },

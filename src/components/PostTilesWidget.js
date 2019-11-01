@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from 'gatsby-image'
 import SiteButton from './SiteButton'
+import uuid from 'uuid/v4'
 
 const StyledPostTileContainer = styled.div`
      display: flex;
@@ -110,9 +111,7 @@ const PostTilesWidget = () => {
               featuredimage {
                 childImageSharp {
                   fluid(maxHeight: 144) {
-                    src
-                    srcSet
-                    aspectRatio
+                    ...GatsbyImageSharpFluid
                   }
                 }
               }
@@ -131,9 +130,8 @@ const PostTilesWidget = () => {
       <>
         <StyledPostTileContainer className="container boxed" >
 
-            { data.allMarkdownRemark.edges.map((post) => (
-                
-                <StyledPostTile>
+            { data.allMarkdownRemark.edges.map((post) => (                
+                <StyledPostTile key={uuid()}>
                     <Link to={post.node.fields.slug}>
                         <Img className="post-image" fluid={post.node.frontmatter.featuredimage.childImageSharp.fluid} alt={post.node.frontmatter.title} />
                         <div className="summary-block">
@@ -142,8 +140,8 @@ const PostTilesWidget = () => {
                         </div>
                     </Link>
                 </StyledPostTile>
-
             ))}
+            
         </StyledPostTileContainer>
         
         <StyledReadMore>

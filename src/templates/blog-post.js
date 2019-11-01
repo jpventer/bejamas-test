@@ -17,18 +17,20 @@ export const query = graphql`
 
 const StyledBlogPostTemplate = styled.article`
 
+max-width:1200px;
+
   header{
 
     margin-bottom:4.8rem;
     margin-top:17rem;
+    margin
 
     time{
       font-weight:600;
     }
   }
 
-  article{
-    max-width:1200px;
+  section{
 
     p{
       margin-top: 2.4rem;
@@ -50,12 +52,12 @@ const StyledBlogPostTemplate = styled.article`
 export function BlogPostTemplate( { post } ) {
   
   return (
-    <StyledBlogPostTemplate className="container boxed">
+    <StyledBlogPostTemplate className="container">
       <header>
         <h1 className="title header3">{post.frontmatter.title}</h1>
         <time>{post.frontmatter.date}</time>
       </header>
-      <article dangerouslySetInnerHTML={{__html: post.html }}></article>
+      <section dangerouslySetInnerHTML={{__html: post.html }}></section>
     </StyledBlogPostTemplate>
   )
 }

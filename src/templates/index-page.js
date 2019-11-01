@@ -1,56 +1,49 @@
 import React from 'react'
+import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
 
 import Layout from '../components/Layout'
-
-import { graphql } from 'gatsby'
-
 import LogosWidget from '../components/LogosWidget'
 import PostTilesWidget from '../components/PostTilesWidget'
 import HeroComponent from '../components/HeroComponent'
 import IntroComponent from '../components/IntroComponent'
 
 export const query = graphql`
-query ($slug: String!) {
-  markdownRemark(fields: {slug: {eq: $slug}}) {
-    frontmatter {
-      title
-      hero {
-        heading
-        subheading
-        image {
-          childImageSharp {
-            fluid(maxWidth: 385) {
-              sizes
-              src
-              srcSet
-              aspectRatio
+  query ($slug: String!) {
+    markdownRemark(fields: {slug: {eq: $slug}}) {
+      frontmatter {
+        title
+        hero {
+          heading
+          subheading
+          image {
+            childImageSharp {
+              fluid(maxWidth: 385) {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
         }
-      }
-      intro {
-        description
-        heading
-        image {
-          childImageSharp {
-            fluid(maxWidth: 236) {
-              src
-              srcSet
-              aspectRatio
+        intro {
+          description
+          heading
+          image {
+            childImageSharp {
+              fluid(maxWidth: 236) {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
         }
-      }
-      logos {
-        link
-        image {
-          publicURL
+        logos {
+          link
+          image {
+            publicURL
+          }
         }
       }
     }
   }
-}
-
 `
 
 
@@ -63,15 +56,19 @@ const IndexPageTemplate = ({ pageContent }) => (
   </>
 );
 
-IndexPageTemplate.propTypes = {}
+IndexPageTemplate.propTypes = {
+  pageContent: PropTypes.object
+}
 
 
-const IndexPage = (props) => (
+const IndexPage = ({ data }) => (
   <Layout>
-      <IndexPageTemplate pageContent={props.data} />            
+      <IndexPageTemplate pageContent={data} />            
   </Layout>
 )
 
-IndexPage.propTypes = {}
+IndexPage.propTypes = {
+  data: PropTypes.object
+}
 
 export default IndexPage

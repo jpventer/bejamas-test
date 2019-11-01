@@ -3,12 +3,9 @@ import styled from 'styled-components'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import Toggle from '../components/Toggle'
 
-
-const menuHeight = '6rem'
-
 const StyledMenu = styled.div`
 
-    height: ${menuHeight};
+    height: ${({ theme }) => theme.menuHeight};
     background-color: ${({ theme }) => theme.body};
     box-shadow: 0px 2px 12px #0000001D;
     position:fixed;
@@ -110,7 +107,7 @@ const StyledMenu = styled.div`
 
             a{
 
-                height: ${menuHeight};
+                height: ${({ theme }) => theme.menuHeight};
                 width:100%;
                 
                 .label{
@@ -137,7 +134,7 @@ const StyledMenu = styled.div`
         .hamburgerMenu{
             cursor: pointer;
             display: flex;
-            height: ${menuHeight};
+            height: ${({ theme }) => theme.menuHeight};
             align-items: center;
             padding-left:4.2rem;
             box-shadow: 0px 2px 12px #0000001D;
@@ -219,7 +216,7 @@ const Menu = ( { toggleTheme, theme }) => {
 
                 <img className="siteLogo main" src={data.siteLogo.publicURL} alt="site logo" />
 
-                <Link to="/blog/" activeClassName="active">
+                <Link to="/blog/2019-08-15-another-blog-post-for-customers/" activeClassName="active">
                     <span className="label">Blog</span>
                     <span className="half-moon"></span>
                 </Link>
